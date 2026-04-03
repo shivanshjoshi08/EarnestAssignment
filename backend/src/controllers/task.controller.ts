@@ -79,7 +79,7 @@ export const getTaskById = async (
 ): Promise<void> => {
   try {
     const userId = req.user!.userId;
-    const { id } = req.params;
+    const id = req.params.id as string;
 
     const task = await prisma.task.findUnique({
       where: { id },
@@ -139,7 +139,7 @@ export const updateTask = async (
 ): Promise<void> => {
   try {
     const userId = req.user!.userId;
-    const { id } = req.params;
+    const id = req.params.id as string;
     const data = updateTaskSchema.parse(req.body);
 
     // Check if task exists and belongs to user
@@ -183,7 +183,7 @@ export const deleteTask = async (
 ): Promise<void> => {
   try {
     const userId = req.user!.userId;
-    const { id } = req.params;
+    const id = req.params.id as string;
 
     // Check if task exists and belongs to user
     const existingTask = await prisma.task.findUnique({
@@ -216,7 +216,7 @@ export const toggleTask = async (
 ): Promise<void> => {
   try {
     const userId = req.user!.userId;
-    const { id } = req.params;
+    const id = req.params.id as string;
 
     // Check if task exists and belongs to user
     const existingTask = await prisma.task.findUnique({
