@@ -24,7 +24,7 @@ export default function Register() {
       const res = await api.post('/auth/register', { name, email, password });
       localStorage.setItem('accessToken', res.data.accessToken);
       showToast('Account created! Welcome 🎉', 'success');
-      router.push('/');
+      router.push('/dashboard');
     } catch (err: any) {
       setError(err.message || 'Registration failed. Please try again.');
     } finally {
